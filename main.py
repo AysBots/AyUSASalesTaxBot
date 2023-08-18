@@ -1,7 +1,6 @@
-
 import logging
-from api_loader import AyUSASalesTaxBot_API_KEY
 from telegram import __version__ as TG_VER
+from api_loader import AyUSASalesTaxBot_API_KEY
 
 try:
     from telegram import __version_info__
@@ -15,7 +14,8 @@ if __version_info__ < (20, 0, 0, "alpha", 1):
         f"visit https://docs.python-telegram-bot.org/en/v{TG_VER}/examples.html"
     )
 from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
+from telegram.ext import (Application, CommandHandler, ContextTypes,
+                          MessageHandler, filters)
 
 # Enable logging
 logging.basicConfig(

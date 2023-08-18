@@ -1,4 +1,5 @@
-import dotenv, os
+import os
+import dotenv
 
 # TELEGRAM BOT API KEY
 try:
