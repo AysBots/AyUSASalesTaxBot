@@ -1,6 +1,8 @@
 import logging
 from telegram import __version__ as TG_VER
+from typing import Final
 from api_loader import AyUSASalesTaxBot_API_KEY
+from core.commands import *
 
 try:
     from telegram import __version_info__
@@ -14,7 +16,7 @@ if __version_info__ < (20, 0, 0, "alpha", 1):
         f"visit https://docs.python-telegram-bot.org/en/v{TG_VER}/examples.html"
     )
 from telegram import Update
-from telegram.ext import (Application, CommandHandler, ContextTypes,
+from telegram.ext import (Application, CommandHandler,
                           MessageHandler, filters)
 
 # Enable logging
@@ -27,29 +29,8 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 # Initialize Bot Key
-API_KEY = AyUSASalesTaxBot_API_KEY
+API_KEY: Final = AyUSASalesTaxBot_API_KEY
 print("[+] APIKEY LOADED.....")
-
-# Define a few command handlers. These usually take the two arguments update and
-# context.
-
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /start is issued."""
-    user = update.effective_user
-    await update.message.reply_html(
-        rf"Hi {user.mention_html()}!"
-    )
-
-
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /help is issued."""
-    await update.message.reply_text("Help!")
-
-
-async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Echo the user message."""
-    await update.message.reply_text(update.message.text)
 
 
 def main() -> None:
